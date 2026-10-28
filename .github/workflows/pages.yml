@@ -5,7 +5,7 @@ on:
     branches: [main]
   workflow_dispatch:
   workflow_run:
-    workflows: ["Copiar archivos y contenido del WordPress", "Copia exacta del WordPress"]
+    workflows: ["Copia exacta del WordPress"]
     types: [completed]
 
 permissions:
@@ -30,7 +30,7 @@ jobs:
         run: |
           mkdir _site
           rsync -a --exclude '.git*' --exclude '.github' --exclude scripts --exclude respaldo \
-            --exclude README.md --exclude CLAUDE.md --exclude _redirects --exclude _site --exclude _espejo ./ _site/
+            --exclude README.md --exclude CLAUDE.md --exclude _site --exclude _espejo ./ _site/
           touch _site/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
