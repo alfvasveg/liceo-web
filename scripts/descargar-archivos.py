@@ -16,7 +16,7 @@ import urllib.request
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 PAGINAS = sorted(RAIZ.glob("*.html"))
 PATRON = re.compile(r"https://liceodecienciasyartes\.com/wp-content/uploads/[^\"')\s]+")
-DESTINOS = {".pdf": "assets/docs"}  # el resto va a assets/img
+DESTINOS = {".pdf": "assets/docs", ".docx": "assets/docs", ".doc": "assets/docs"}  # el resto va a assets/img
 
 
 def main() -> int:

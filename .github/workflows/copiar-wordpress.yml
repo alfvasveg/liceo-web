@@ -1,6 +1,7 @@
 name: Copiar archivos y contenido del WordPress
 
 # Corre al subir este archivo o a mano desde la pestaña Actions.
+# Última ejecución pedida: hoja de inscripción e imagen de Inscripciones.
 on:
   push:
     branches: [main]

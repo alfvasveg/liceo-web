@@ -29,8 +29,8 @@ jobs:
       - name: Preparar archivos del sitio
         run: |
           mkdir _site
-          cp index.html _site/
-          cp -r assets _site/
+          rsync -a --exclude '.git*' --exclude '.github' --exclude scripts --exclude respaldo \
+            --exclude README.md --exclude CLAUDE.md --exclude _redirects --exclude _site ./ _site/
           touch _site/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:

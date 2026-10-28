@@ -240,6 +240,22 @@ q{quotes:"«" "»";color:var(--fg);font-style:italic}
 .note{font-size:.92rem;color:var(--muted)}
 .note.err{color:var(--rose)}
 nav a[aria-current="page"]{background:var(--surface);color:var(--ink-2)}
+
+.checklist{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.checklist li{position:relative;padding-left:30px;color:var(--fg)}
+.checklist li::before{content:"✓";position:absolute;left:0;top:2px;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#1c1606;font:700 .75rem/20px var(--body);text-align:center}
+.notice{padding:16px 18px;border-radius:var(--r);background:var(--surface);border-left:4px solid var(--rose)}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn.ghost{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 2px var(--line)}
+.back{color:var(--accent);text-decoration:none;font-weight:700;font-size:.9rem}
+.pagehead h1.post-title{font-size:clamp(1.7rem,4.4vw,2.6rem);max-width:28ch}
+.prose{max-width:68ch;display:grid;gap:14px;font-size:1.08rem}
+.prose h2{font-size:1.5rem;margin-top:18px}
+.prose h3{font-size:1.2rem;margin-top:10px}
+.prose p{margin:0}
+.prose ul,.prose ol{margin:0;padding-left:22px;display:grid;gap:8px}
+.prose a{color:var(--rose)}
+.cform input[type=file]{padding:10px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -255,7 +271,7 @@ nav a[aria-current="page"]{background:var(--surface);color:var(--ink-2)}
       <a href="https://www.tiktok.com/@liceodecienciasyartes" aria-label="TikTok">tt</a>
     </div>
     <div class="links">
-      <a href="https://liceodecienciasyartes.com/inscripciones/">Inscripciones</a>
+      <a href="#inscripciones">Inscripciones</a>
       <a href="https://www.uelca.com/">Portal UELCA</a>
     </div>
   </div>
@@ -426,22 +442,19 @@ nav a[aria-current="page"]{background:var(--surface);color:var(--ink-2)}
     <div class="wrap">
       <div class="intro"><span class="eyebrow">Reflexiones</span><h2>Blog</h2></div>
       <div class="posts">
-        <a class="post" href="https://liceodecienciasyartes.com/2024/12/13/sistema-boletas-disciplina-liceo-ciencias-artes-quito/">
-          <time datetime="2024-12-13">13 dic 2024 · Pedro Vásquez R.</time>
-          <h3>Sistema de Boletas: un enfoque efectivo y asertivo para el manejo de la disciplina</h3>
-          <p>En el Liceo de Ciencias y Artes de Quito, la disciplina se entiende como un componente esencial para…</p>
-        </a>
-        <a class="post" href="https://liceodecienciasyartes.com/2024/12/13/el-arte-como-eje-transversal-para-la-evaluacion-en-el-liceo-de-cienciasy-artes-de-quito/">
-          <time datetime="2024-12-13">13 dic 2024 · Mgst. Isaac Vásquez R.</time>
-          <h3>El Arte como eje transversal para la evaluación</h3>
-          <p>En el Liceo de Ciencias y Artes de Quito, estamos convencidos de que el arte no…</p>
-        </a>
-        <a class="post" href="https://liceodecienciasyartes.com/2024/06/14/tareas-hechas-con-inteligencia-artificial/">
-          <time datetime="2024-06-14">14 jun 2024 · Mgst. Isaac Vásquez R.</time>
-          <h3>Tareas hechas con Inteligencia Artificial. Ningún problema: un nuevo paradigma a través de procesos metacognitivos</h3>
-          <p>Como rector del Liceo de Ciencias y Artes de Quito, es un placer compartir nuestras reflexiones…</p>
-        </a>
-      </div>
+    <a class="post" href="#blog-boletas">
+      <time datetime="2024-12-13">13 dic 2024 · Pedro Vásquez R.</time>
+      <h3>Sistema de Boletas</h3>
+      <p>En el Liceo de Ciencias y Artes de Quito, la disciplina se entiende como un componente esencial para el desarrollo integral de nuestros estudiantes.…</p></a>
+    <a class="post" href="#blog-arte-evaluacion">
+      <time datetime="2024-12-13">13 dic 2024 · Mgst. Isaac Vásquez R.</time>
+      <h3>El Arte como Eje Transversal para la Evaluación en el Liceo de Ciencias y Artes de Quito</h3>
+      <p>En el Liceo de Ciencias y Artes de Quito, estamos convencidos de que el arte no es solo una disciplina más dentro del currículo, sino un eje…</p></a>
+    <a class="post" href="#blog-ia">
+      <time datetime="2024-06-14">14 jun 2024 · Mgst. Isaac Vásquez R.</time>
+      <h3>Tareas hechas con Inteligencia Artificial</h3>
+      <p>Como rector del Liceo de Ciencias y Artes de Quito, es un placer compartir nuestras reflexiones sobre un tema de creciente relevancia en el ámbito…</p></a>
+  </div>
     </div>
   </section>
 </div>
@@ -457,28 +470,39 @@ nav a[aria-current="page"]{background:var(--surface);color:var(--ink-2)}
     <article class="row">
       <div class="ph" data-label="Inicial"><img src="assets/img/inicial_3.webp" alt="Estudiantes de Inicial"></div>
       <div class="txt"><span class="tag">Desde 3 años</span><h2>Inicial</h2>
-        <p>Fortalecemos el desarrollo cognitivo, emocional, físico-motor y espiritual de los niños. Fomentamos la toma de decisiones, la responsabilidad, el uso autónomo de los materiales, la exploración y la creatividad.</p></div>
+        <p>Se enfoca en afianzar el desarrollo de las áreas cognitiva, afectiva, psicomotriz y espiritual, ayuda a los niños y niñas a tomar decisiones, a asumir responsabilidades y los estimula al uso autónomo de los materiales, favoreciendo la exploración y la creatividad.</p></div>
     </article>
     <article class="row">
       <div class="ph" data-label="Básica Elemental"><img src="assets/img/basica-elemental.webp" alt="Estudiantes de Básica Elemental"></div>
       <div class="txt"><span class="tag">2.º a 4.º de EGB · 6 a 8 años</span><h2>Básica Elemental</h2>
-        <p>Trabajamos con tareas cooperativas y proyectos de comprensión que ayudan a los estudiantes a aprender haciendo y a construir conocimiento en equipo.</p></div>
+        <p>La educación Básica Elemental comprende segundo, tercero y cuarto años de educación general básica.</p>
+        <p>Los niños y niñas de entre seis y ocho años de edad mediante tareas cooperativas y proyectos de comprensión adquieren las bases esenciales del conocimiento.</p></div>
     </article>
     <article class="row">
       <div class="ph" data-label="Básica Media"><img src="assets/img/basica-media.webp" alt="Estudiantes de Básica Media"></div>
       <div class="txt"><span class="tag">5.º a 7.º de EGB · 9 a 11 años</span><h2>Básica Media</h2>
-        <p>Los proyectos se enriquecen con el arte y la música, que integran las distintas materias y dan sentido a lo que se aprende.</p></div>
+        <p>Básica Media corresponde a 5.º, 6.º y 7.º grados de Educación General Básica y preferentemente se ofrece a los estudiantes de 9 a 11 años de edad. El Arte y la Música enriquecen los proyectos para formar niñas y niños sensibles, creativos, con pensamiento analítico.</p></div>
     </article>
     <article class="row">
       <div class="ph" data-label="Básica Superior"><img src="assets/img/basica-superior.webp" alt="Estudiantes de Básica Superior"></div>
       <div class="txt"><span class="tag">8.º a 10.º de EGB · 12 a 14 años</span><h2>Básica Superior</h2>
-        <p>Una etapa para consolidar el pensamiento crítico, la autonomía y el trabajo por proyectos interdisciplinarios.</p></div>
+        <p>Básica Superior corresponde a 8.º, 9.º y 10.º grados de Educación General Básica y preferentemente se ofrece a los estudiantes de 12 a 14 años de edad.</p></div>
     </article>
     <article class="row">
       <div class="ph" data-label="Bachillerato"><img src="assets/img/bachillerato.webp" alt="Estudiantes de Bachillerato"></div>
       <div class="txt"><span class="tag">1.º a 3.º de BGU · Ciencias</span><h2>Bachillerato</h2>
-        <p>Bachillerato en Ciencias que ayuda a los estudiantes a explorar su futuro y su vocación a través de asignaturas pertinentes. Opción de doble titulación con el bachillerato estadounidense.</p></div>
+        <p>Bachillerato en Ciencias, que corresponde a 1.º, 2.º y 3.º de BGU, se enfoca a estudiantes ansiosos por descubrir su futuro y vocación mediante materias que impulsen e incentiven el descubrimiento del mismo.</p></div>
     </article>
+  </div></section>
+
+  <section class="tint method"><div class="wrap">
+    <div class="txt">
+      <span class="eyebrow">Holístico humanista</span>
+      <h2>El método</h2>
+      <p>La Unidad Educativa Liceo de Ciencias y Artes adopta una metodología holística humanista que reconoce a cada estudiante como un ser integral. Nuestra enseñanza abarca tanto el desarrollo académico como la formación emocional, social y ética, promoviendo una comprensión profunda de sí mismos y del mundo. El arte es un eje transversal que fomenta habilidades críticas como la empatía, la colaboración y el pensamiento crítico.</p>
+      <p>Promovemos un aprendizaje activo a través de proyectos interdisciplinarios que integran las artes con otras materias. De esta manera, el arte se convierte en un lenguaje universal que facilita una evaluación auténtica y significativa. Nuestro objetivo es formar agentes de cambio, preparados para enfrentar los retos del mundo con una visión creativa, ética y crítica.</p>
+    </div>
+    <div class="ph" data-label="Da Vinci y el arte"><img src="assets/img/davinciarte2-987x1024.webp" alt="Ilustración sobre ciencia y arte"></div>
   </div></section>
 
   <section class="cta-band"><div class="wrap">
@@ -499,7 +523,8 @@ nav a[aria-current="page"]{background:var(--surface);color:var(--ink-2)}
     <div class="txt">
       <span class="eyebrow">Misión</span>
       <h2>Bienvenidos al Liceo de Ciencias y Artes</h2>
-      <p>Somos una unidad educativa de Quito que acompaña a los estudiantes desde Inicial II hasta 3.º de Bachillerato. Nuestra misión es formar estudiantes íntegros, creativos y emprendedores, con pensamiento crítico, valores sólidos y una mirada intercultural.</p>
+      <p>En el Liceo de Ciencias y Artes de Quito, nos enorgullece ofrecer una educación que abarca desde Inicial II hasta 3.º de Bachillerato, basada en una filosofía educativa holística-humanista.</p>
+      <p>Nuestra misión es formar estudiantes íntegros, creativos y emprendedores, preparados para enfrentar los desafíos de un mundo globalizado con pensamiento crítico, valores sólidos y respeto por la interculturalidad.</p>
       <div><a class="btn" href="#oferta-academica">Ver oferta académica</a></div>
     </div>
     <div class="ph tall" data-label="Filosofía"><img src="assets/img/filosofia-972x1024.webp" alt="Filosofía educativa del Liceo"></div>
@@ -508,9 +533,9 @@ nav a[aria-current="page"]{background:var(--surface);color:var(--ink-2)}
   <section class="tint"><div class="wrap split rev">
     <div class="txt">
       <span class="eyebrow">Filosofía educativa</span>
-      <h2>Una educación para todo el ser humano</h2>
-      <p>La educación holística atiende a la vez lo académico, lo emocional, lo social y lo artístico. Seguimos a John P. Miller, para quien <q>la educación holística busca nutrir el desarrollo de todos los aspectos del ser humano</q> (2007, p. 13).</p>
-      <p>Y coincidimos con Ken Robinson en que <q>la creatividad ahora es tan importante en la educación como la alfabetización</q> (2009, p. 46).</p>
+      <h2>Filosofía Educativa e inclusión del arte en el currículo</h2>
+      <p>Nuestra filosofía se fundamenta en el enfoque holístico de la educación, que considera al estudiante como un ser integral, cuyas necesidades académicas, emocionales, sociales y artísticas deben ser atendidas de manera equilibrada. Según John P. Miller (2007), destacado autor en el ámbito de la educación holística, «la educación holística busca nutrir el desarrollo de todos los aspectos del ser humano, incluyendo la mente, el cuerpo y el espíritu» (p. 13). Este enfoque nos permite cultivar no solo el intelecto, sino también la sensibilidad y la ética de nuestros estudiantes, preparándolos para ser ciudadanos responsables y comprometidos con la transformación de la sociedad.</p>
+      <p>En palabras de Ken Robinson (2009), «la creatividad ahora es tan importante en la educación como la alfabetización, y deberíamos tratarla con la misma seriedad» (p. 46). Esto subraya nuestra creencia en el valor fundamental de una educación que integra las artes como un componente esencial del desarrollo del estudiante.</p>
     </div>
     <div class="ph tall" data-label="Arte en el currículo"><img src="assets/img/arte01-1024x1006.webp" alt="El arte en el currículo"></div>
   </div></section>
@@ -518,9 +543,9 @@ nav a[aria-current="page"]{background:var(--surface);color:var(--ink-2)}
   <section><div class="wrap split">
     <div class="txt">
       <span class="eyebrow">Formación holística</span>
-      <h2>Calidez, calidad e inclusión</h2>
-      <p>Nuestro enfoque une la calidez humana, la calidad docente, la inclusión, el rigor científico y técnico, y la práctica diaria de los valores. Como propuso María Montessori, entendemos la educación como un proceso natural del ser humano (2013, p. 17).</p>
-      <p>Te invitamos a conocer nuestra propuesta y a formar parte de nuestra comunidad.</p>
+      <h2>Formación Holística</h2>
+      <p>La formación holística en el Liceo de Ciencias y Artes de Quito se manifiesta en un enfoque educativo que promueve la calidez y calidad en la enseñanza, la inclusión, el rigor científico y técnico, y la práctica de valores. Este enfoque integral asegura que cada estudiante no solo adquiera conocimientos académicos, sino también habilidades sociales y emocionales, valores éticos y una apreciación profunda por la diversidad cultural. Como afirma María Montessori, «la educación no es lo que el maestro da; la educación es un proceso natural que se desarrolla espontáneamente en el ser humano» (Montessori, 2013, p. 17). Nos esforzamos por crear un entorno de aprendizaje donde cada individuo se sienta valorado y apoyado en su crecimiento personal y académico.</p>
+      <p>En el Liceo de Ciencias y Artes de Quito, estamos comprometidos con la excelencia educativa y la formación de futuros líderes que contribuirán al progreso y bienestar de nuestra sociedad. Los invitamos a conocer más sobre nuestra propuesta educativa y a formar parte de nuestra comunidad escolar, donde juntos construimos un futuro lleno de posibilidades y crecimiento integral.</p>
     </div>
     <div class="ph tall" data-label="Formación holística"><img src="assets/img/holistico.webp" alt="Formación holística"></div>
   </div></section>
@@ -529,7 +554,8 @@ nav a[aria-current="page"]{background:var(--surface);color:var(--ink-2)}
     <div class="ph" data-label="Foto"><img src="assets/img/gerentegeneral-e1734108905702.jpeg" alt="Alfredo Vásquez, Gerente General"></div>
     <div class="txt">
       <span class="eyebrow">Saludo del Gerente General</span>
-      <p class="big">Bienvenidas las familias y los futuros estudiantes. En el Liceo creemos en el respeto profundo por la docencia y por el aprendizaje, y trabajamos cada día para que cada niño y joven encuentre aquí un lugar donde crecer.</p>
+      <p class="big">“La oportunidad que hoy nos une, es una muestra de la cercanía entre la inteligencia humana, la voluntad de enseñar y la suprema decisión de aprender. Quienes por profesión nos dedicamos a la noble tarea de la docencia, sentimos un profundo respeto y admiración por todos los involucrados en la enseñanza – aprendizaje y por el oficio académico.</p>
+      <p class="big">Saludamos con mucho cariño a los candidatos y a los partícipes de nuestro proceso académico. No les puedo ocultar que la mente se rinde ante su gentil tarea intelectual de formular interrogantes y buscar respuestas que permitan, a la inteligencia finita, atisbar las infinitas luces de la Sabiduría”.</p>
       <p><strong>Alfredo Vásquez</strong><br><span class="muted">Gerente General</span></p>
     </div>
   </div></section>
@@ -538,15 +564,17 @@ nav a[aria-current="page"]{background:var(--surface);color:var(--ink-2)}
     <div class="intro" style="display:grid;gap:14px">
       <span class="eyebrow" style="color:var(--accent)">Principios</span>
       <h2>Nuestros valores</h2>
+      <p class="lead">En la Unidad Educativa Liceo de Ciencias y Artes, nuestros valores fundamentales guían cada aspecto de nuestra labor educativa. Creemos en una formación basada en los principios de:</p>
     </div>
     <div class="vgrid">
       <div class="v"><h3>Respeto</h3><p>Fomentamos un ambiente inclusivo y de convivencia armónica, donde cada persona es valorada por su singularidad.</p></div>
       <div class="v"><h3>Creatividad</h3><p>Promovemos la capacidad de pensar de manera original y expresarse a través de diversas formas artísticas y académicas.</p></div>
-      <div class="v"><h3>Empatía</h3><p>Desarrollamos la habilidad de comprender y compartir las emociones y perspectivas de los demás.</p></div>
-      <div class="v"><h3>Responsabilidad</h3><p>Inculcamos el compromiso consigo mismos, con los demás y con el entorno, formando ciudadanos éticos y conscientes.</p></div>
-      <div class="v"><h3>Colaboración</h3><p>Potenciamos el trabajo en equipo para alcanzar metas comunes.</p></div>
-      <div class="v"><h3>Autonomía</h3><p>Estimulamos la toma de decisiones y el pensamiento crítico para que cada estudiante lidere su propio aprendizaje.</p></div>
+      <div class="v"><h3>Empatía</h3><p>Desarrollamos la habilidad de comprender y compartir las emociones y perspectivas de los demás, creando una comunidad de apoyo y comprensión.</p></div>
+      <div class="v"><h3>Responsabilidad</h3><p>Inculcamos en nuestros estudiantes el sentido de compromiso consigo mismos, con los demás y con el entorno, formando ciudadanos éticos y conscientes.</p></div>
+      <div class="v"><h3>Colaboración</h3><p>Potenciamos el trabajo en equipo, destacando la importancia de construir en conjunto para alcanzar metas comunes.</p></div>
+      <div class="v"><h3>Autonomía</h3><p>Estimulamos la toma de decisiones y el pensamiento crítico, formando individuos capaces de liderar su propio proceso de aprendizaje y crecimiento personal.</p></div>
     </div>
+    <p class="close">Estos valores forman la base de nuestra <strong style="color:var(--on-ink)">educación holística humanista</strong>, preparando a los estudiantes no solo para el éxito académico, sino también para convertirse en agentes de cambio con una visión ética, creativa y compasiva del mundo.</p>
   </div></section>
 </div>
 
@@ -555,25 +583,25 @@ nav a[aria-current="page"]{background:var(--surface);color:var(--ink-2)}
   <section class="pagehead"><div class="wrap">
     <span class="eyebrow">Espacios con propósito</span>
     <h1>Nuestras instalaciones</h1>
-    <p>Cada espacio está pensado para aprender, crear y estar bien.</p>
+    <p>Nuestra filosofía se fundamenta en el enfoque holístico de la educación, que considera al estudiante como un ser integral.</p>
   </div></section>
 
   <section><div class="wrap places">
     <figure><div class="ph" data-label="Biblioteca"><img src="assets/img/instalacion-03-1024x683.webp" alt="Biblioteca"></div>
-      <figcaption><h3>Biblioteca</h3><p>Un espacio para la lectura, la investigación y el estudio tranquilo.</p></figcaption></figure>
+      <figcaption><h3>Biblioteca</h3></figcaption></figure>
     <figure><div class="ph" data-label="Aulas"><img src="assets/img/instalacion-02-1024x683.webp" alt="Aulas"></div>
-      <figcaption><h3>Aulas</h3><p>Salones diseñados para el trabajo por proyectos y el aprendizaje activo.</p></figcaption></figure>
+      <figcaption><h3>Aulas</h3></figcaption></figure>
     <figure><div class="ph" data-label="Cancha sintética"><img src="assets/img/instalacion-04-1024x683.webp" alt="Cancha sintética y exteriores"></div>
-      <figcaption><h3>Cancha sintética y exteriores</h3><p>Áreas abiertas para el deporte, el juego y la convivencia.</p></figcaption></figure>
+      <figcaption><h3>Cancha sintética y exteriores</h3></figcaption></figure>
     <figure><div class="ph" data-label="Piscina"><img src="assets/img/instalacion-01-1024x683.webp" alt="Piscina"></div>
-      <figcaption><h3>Piscina</h3><p>Natación como parte de la formación física de nuestros estudiantes.</p></figcaption></figure>
+      <figcaption><h3>Piscina</h3></figcaption></figure>
   </div></section>
 
   <section class="tint"><div class="wrap" style="display:grid;gap:24px">
     <h2>Otros servicios</h2>
     <div class="services">
-      <div class="svc"><h3>Transporte</h3><p>Servicio de transporte a todo el centro norte de la ciudad, incluidos Calderón, Nayón y Llano Chico.</p></div>
-      <div class="svc"><h3>Bar</h3><p>Lunch diario y refrigerios. Cumple con el Acuerdo Interministerial No. 00007-2020 y cuenta con todos los permisos y capacitaciones requeridas.</p></div>
+      <div class="svc"><h3>Transporte</h3><p>Disponemos de servicio de transporte a todo el centro norte de la ciudad, incluidos Calderón, Nayón y Llano Chico.</p></div>
+      <div class="svc"><h3>Bar</h3><p>El bar ofrece servicios de lunch diario y refrigerios, cumple con el Acuerdo Interministerial No. 00007-2020 y dispone de todos los permisos necesarios, así como las capacitaciones requeridas.</p></div>
     </div>
   </div></section>
 </div>
@@ -604,18 +632,18 @@ nav a[aria-current="page"]{background:var(--surface);color:var(--ink-2)}
     <p>Artículos de nuestro equipo directivo sobre educación, arte y evaluación.</p>
   </div></section>
   <section><div class="wrap"><div class="posts">
-    <a class="post" href="https://liceodecienciasyartes.com/2024/12/13/sistema-boletas-disciplina-liceo-ciencias-artes-quito/">
+    <a class="post" href="#blog-boletas">
       <time datetime="2024-12-13">13 dic 2024 · Pedro Vásquez R.</time>
-      <h3>Sistema de Boletas: un enfoque efectivo y asertivo para el manejo de la disciplina</h3>
-      <p>En el Liceo de Ciencias y Artes de Quito, la disciplina se entiende como un componente esencial para…</p></a>
-    <a class="post" href="https://liceodecienciasyartes.com/2024/12/13/el-arte-como-eje-transversal-para-la-evaluacion-en-el-liceo-de-cienciasy-artes-de-quito/">
+      <h3>Sistema de Boletas</h3>
+      <p>En el Liceo de Ciencias y Artes de Quito, la disciplina se entiende como un componente esencial para el desarrollo integral de nuestros estudiantes.…</p></a>
+    <a class="post" href="#blog-arte-evaluacion">
       <time datetime="2024-12-13">13 dic 2024 · Mgst. Isaac Vásquez R.</time>
-      <h3>El Arte como eje transversal para la evaluación</h3>
-      <p>En el Liceo de Ciencias y Artes de Quito, estamos convencidos de que el arte no…</p></a>
-    <a class="post" href="https://liceodecienciasyartes.com/2024/06/14/tareas-hechas-con-inteligencia-artificial/">
+      <h3>El Arte como Eje Transversal para la Evaluación en el Liceo de Ciencias y Artes de Quito</h3>
+      <p>En el Liceo de Ciencias y Artes de Quito, estamos convencidos de que el arte no es solo una disciplina más dentro del currículo, sino un eje…</p></a>
+    <a class="post" href="#blog-ia">
       <time datetime="2024-06-14">14 jun 2024 · Mgst. Isaac Vásquez R.</time>
-      <h3>Tareas hechas con Inteligencia Artificial. Ningún problema</h3>
-      <p>Como rector del Liceo de Ciencias y Artes de Quito, es un placer compartir nuestras reflexiones…</p></a>
+      <h3>Tareas hechas con Inteligencia Artificial</h3>
+      <p>Como rector del Liceo de Ciencias y Artes de Quito, es un placer compartir nuestras reflexiones sobre un tema de creciente relevancia en el ámbito…</p></a>
   </div></div></section>
 </div>
 
@@ -650,6 +678,299 @@ nav a[aria-current="page"]{background:var(--surface);color:var(--ink-2)}
   </div></section>
 </div>
 
+<!-- ===== INSCRIPCIONES ===== -->
+<div class="view" id="v-inscripciones" hidden>
+  <section class="pagehead"><div class="wrap">
+    <span class="eyebrow">Admisiones abiertas 2025 - 2026</span>
+    <h1>Inscripciones</h1>
+    <p>Todo lo que necesitas para inscribir a tu hijo o hija en el Liceo.</p>
+  </div></section>
+
+  <section><div class="wrap split">
+    <div class="txt">
+      <span class="eyebrow">Documentos solicitados</span>
+      <h2>Qué debes traer</h2>
+      <ul class="checklist">
+        <li>Cédulas del alumno aplicante y padres de familia.</li>
+        <li>Foto individual del alumno aplicante y de la familia.</li>
+        <li>Calificaciones y documentos de los años lectivos anteriores (este requisito se aplica desde 1.º de E.G.B.).</li>
+        <li>Para alumnos desde el 1.er año de bachillerato se requieren también los documentos de PPE (Participación Estudiantil).</li>
+      </ul>
+      <div class="notice"><strong>Importante:</strong> es necesario que el proceso de inscripción se lo realice presencialmente, ya que se generan 2 entrevistas al alumno y a su representante previas al proceso de inscripción.</div>
+      <div class="btns">
+        <a class="btn" href="https://liceodecienciasyartes.com/wp-content/uploads/2025/01/Hoja-de-INSCRIPCION-LCYA-2024-2025.docx">Descarga la hoja de inscripción</a>
+        <a class="btn ghost" href="#contactanos">Agendar visita</a>
+      </div>
+    </div>
+    <div class="ph tall" data-label="Bachillerato"><img src="https://liceodecienciasyartes.com/wp-content/uploads/2024/11/bachillerato-988x1024.webp" alt="Estudiantes del Liceo"></div>
+  </div></section>
+</div>
+
+<!-- ===== TRABAJA CON NOSOTROS ===== -->
+<div class="view" id="v-trabaja-con-nosotros" hidden>
+  <section class="pagehead"><div class="wrap">
+    <span class="eyebrow">Únete al equipo</span>
+    <h1>Trabaja con nosotros</h1>
+    <p>Estaremos gustosos de atender tus necesidades o inquietudes.</p>
+  </div></section>
+  <section><div class="wrap contact">
+    <div class="cinfo">
+      <div><span class="tag">Correo</span><p>secretaria@liceodecienciasyartes.edu.ec</p></div>
+      <div><span class="tag">Teléfonos</span><p>0999911523 · 0999914807</p></div>
+      <div><span class="tag">Dirección</span><p>De las Anonas E14-35 y Carl Nielsen, Quito</p></div>
+      <div class="social-row">
+        <a href="https://www.facebook.com/uelcaedu/?locale=es_LA">Facebook</a>
+        <a href="https://www.instagram.com/liceodecienciasyartes">Instagram</a>
+        <a href="https://www.tiktok.com/@liceodecienciasyartes">TikTok</a>
+        <a href="https://wa.me/593999911523">WhatsApp</a>
+      </div>
+    </div>
+    <form class="cform" id="job-form" novalidate>
+      <h2>Déjanos tus datos</h2>
+      <label for="t-nombre">Nombre completo</label><input id="t-nombre" name="nombre" required autocomplete="name">
+      <label for="t-cedula">Número de cédula</label><input id="t-cedula" name="cedula" required inputmode="numeric" pattern="[0-9]{10}" maxlength="10">
+      <label for="t-email">Email</label><input id="t-email" name="email" type="email" required autocomplete="email">
+      <label for="t-cv">Hoja de vida</label><input id="t-cv" name="hoja_de_vida" type="file" accept=".pdf,.doc,.docx" required>
+      <label for="t-comentario">Comentario</label><textarea id="t-comentario" name="comentario" rows="4"></textarea>
+      <button class="btn" type="submit">Enviar</button>
+      <p class="note" id="t-note" hidden></p>
+    </form>
+  </div></section>
+</div>
+
+<!-- ===== blog-boletas ===== -->
+<div class="view" id="v-blog-boletas" hidden>
+  <section class="pagehead"><div class="wrap">
+    <a class="back" href="#blog">← Blog</a>
+    <h1 class="post-title">Sistema de Boletas: Un Enfoque Efectivo y Asertivo para el Manejo de la Disciplina en el Liceo de Ciencias y Artes de Quito</h1>
+    <p><time datetime="2024-12-13">13 dic 2024</time> · Por Pedro Vásquez R.</p>
+  </div></section>
+  <section><div class="wrap"><article class="prose">
+<p>En el Liceo de Ciencias y Artes de Quito, la disciplina se entiende como un componente<br>esencial para el desarrollo integral de nuestros estudiantes. Para manejar de manera<br>efectiva y asertiva los comportamientos y promover un ambiente de respeto y cariño,<br>hemos implementado un sistema de boletas que nos permite abordar las faltas al<br>«código de convivencia» de manera objetiva y constructiva. Este blog explicará el<br>funcionamiento de dichas boletas, sus ventajas y cómo contribuyen a un entorno escolar positivo y disciplinado.</p>
+
+<h2>Funcionamiento del Sistema de Boletas</h2>
+
+<p>El sistema de boletas consiste en documentos impresos que se llenan cada vez que un<br>estudiante comete una falta o incumple con los compromisos del «código de<br>convivencia». Estas boletas son instrumentos clave que permiten una gestión<br>disciplinaria clara y justa, eliminando la subjetividad y favoreciendo la comunicación<br>efectiva entre docentes, estudiantes y representantes.<br>Cada boleta contiene:</p>
+
+<p>Descripción de la Falta: Se detalla la conducta inapropiada o la falta cometida,<br>proporcionando un registro claro y preciso de lo sucedido.</p>
+
+<p>Acuerdos y Compromisos: Se establecen acuerdos y compromisos entre el<br>estudiante y el docente para corregir la falta y prevenir su repetición.</p>
+
+<p>Firma del Representante: La boleta debe ser firmada por el representante del<br>estudiante, asegurando que esté al tanto de la situación y se involucre en el<br>proceso de corrección.<br>Este sistema no solo visibiliza la falta, sino que también deja evidencia del interés del estudiante por cambiar y mejora la comunicación con los representantes, fomentando una colaboración efectiva en el manejo de la disciplina.</p>
+
+<h2>Ventajas del Sistema de Boletas</h2>
+
+<p>El uso de boletas para el manejo de la disciplina presenta múltiples ventajas que<br>contribuyen al desarrollo de un entorno escolar saludable y productivo:</p>
+
+<p>Objetividad y Claridad: Al documentar cada falta y los acuerdos resultantes, se<br>elimina la subjetividad en la aplicación de consecuencias, garantizando un trato<br>justo y equitativo para todos los estudiantes.</p>
+
+<p>Mejora de la Relación Maestro-Estudiante: Al tener un sistema estructurado y<br>claro, se reduce el desgaste de la relación entre maestros y estudiantes,<br>permitiendo que los docentes se centren en la enseñanza y el apoyo emocional<br>en lugar de la disciplina.</p>
+
+<p>Evidencia de Progreso: Las boletas proporcionan un registro tangible del<br>interés del estudiante por cambiar, lo que puede ser motivador y ayudar a<br>desarrollar una actitud positiva hacia la mejora personal.</p>
+
+<p>Comunicación Efectiva con Representantes: La firma del representante<br>asegura que los padres estén al tanto de las faltas y los esfuerzos de sus hijos por<br>corregirlas, promoviendo una colaboración estrecha entre la escuela y el hogar.</p>
+
+<h2>Disciplina Asertiva y Respetuosa</h2>
+
+<p>En el Liceo de Ciencias y Artes de Quito, nuestra filosofía de manejo de la disciplina se<br>basa en los principios de la asertividad y el respeto. La disciplina asertiva, según autores como Canter y Canter (2001), implica establecer reglas claras y expectativas<br>consistentes, aplicando consecuencias justas y razonables cuando se violan las normas.</p>
+
+<p>Este enfoque no solo mantiene el orden, sino que también fomenta el respeto mutuo y el desarrollo de habilidades de autocontrol en los estudiantes.<br>Además, autores como Gordon (2000) enfatizan la importancia de manejar la disciplina<br>con cariño y empatía, reconociendo que los estudiantes son seres humanos en<br>crecimiento que cometen errores y necesitan orientación. Un enfoque basado en el<br>respeto y el apoyo emocional ayuda a construir un ambiente escolar positivo donde los<br>estudiantes se sienten valorados y motivados para mejorar su comportamiento.</p>
+
+<h2>Conclusión</h2>
+
+<p>El sistema de boletas en el Liceo de Ciencias y Artes de Quito es una herramienta<br>efectiva para el manejo de la disciplina, promoviendo un enfoque objetivo, asertivo y<br>respetuoso. Al documentar las faltas y establecer acuerdos claros, este sistema no solo<br>mejora la relación maestro-estudiante, sino que también involucra a los representantes<br>en el proceso de corrección, fomentando una colaboración estrecha entre la escuela y el hogar. A través de esta metodología, estamos comprometidos con el desarrollo integral de nuestros estudiantes, asegurando que la disciplina se maneje de manera justa, respetuosa y constructiva.</p>
+<p>Si necesitas más información, <a href="#contactanos">¡contáctanos!</a></p>
+<p><br></p>
+
+<h2>Referencias</h2>
+
+<ul>
+<li>Canter, L., &amp; Canter, M. (2001). Disciplina asertiva: Estrategias efectivas para<br>manejar la conducta de los estudiantes en el aula. Paidós.</li>
+
+<li>Gordon, T. (2000). Disciplina sin lágrimas: Una guía para padres y maestros.<br>Ediciones Medici.</li>
+
+</ul>
+  </article></div></section>
+</div>
+
+<!-- ===== blog-arte-evaluacion ===== -->
+<div class="view" id="v-blog-arte-evaluacion" hidden>
+  <section class="pagehead"><div class="wrap">
+    <a class="back" href="#blog">← Blog</a>
+    <h1 class="post-title">El Arte como Eje Transversal para la Evaluación en el Liceo de Ciencias y Artes de Quito</h1>
+    <p><time datetime="2024-12-13">13 dic 2024</time> · Por Mgst. Isaac Vásquez R.</p>
+  </div></section>
+  <section><div class="wrap"><article class="prose">
+<p>En el Liceo de Ciencias y Artes de Quito, estamos convencidos de que el arte no es solo<br>una disciplina más dentro del currículo, sino un eje transversal que enriquece y potencia todas las áreas del conocimiento. Nuestra filosofía educativa holística-humanista se refleja en el uso del arte como herramienta principal para la evaluación y el desarrollo de proyectos multidisciplinarios. En este blog, exploraremos cómo implementamos esta visión y los beneficios que aporta a nuestros estudiantes.</p>
+
+
+
+<h2>El Arte en la Evaluación</h2>
+
+
+
+<p>La evaluación tradicional suele centrarse en pruebas estandarizadas y resultados<br>cuantitativos. Sin embargo, en el Liceo de Ciencias y Artes de Quito, creemos en una<br>evaluación más integral que valore la creatividad, la expresión personal y el proceso de<br>aprendizaje. Utilizamos el arte como eje transversal para evaluar a nuestros estudiantes<br>de manera más completa y significativa.<br>Algunas de las formas en que el arte se integra en nuestra evaluación incluyen:</p>
+
+
+
+<ul>
+<li><strong>Proyectos Artísticos Integrados:</strong> Los estudiantes desarrollan proyectos que<br>combinan varias disciplinas, utilizando el arte como medio principal. Por<br>ejemplo, en un proyecto de ciencias sociales, pueden crear maquetas,<br>ilustraciones o performances que representen períodos históricos o fenómenos<br>culturales.</li>
+
+
+
+<li><strong>Portafolios Artísticos:</strong> Los estudiantes mantienen portafolios donde<br>documentan su trabajo artístico a lo largo del año. Estos portafolios incluyen<br>bocetos, obras terminadas y reflexiones personales sobre su proceso creativo.<br>Este enfoque no solo evalúa el producto final, sino también el crecimiento y<br>desarrollo artístico del estudiante.</li>
+
+
+
+<li><strong>Presentaciones y Exhibiciones:</strong> Organizamos exhibiciones y presentaciones<br>donde los estudiantes muestran sus proyectos artísticos a la comunidad escolar.<br>Estos eventos sirven como plataformas para que los estudiantes reciban<br>retroalimentación y reconocimiento por su trabajo, fomentando la confianza y el<br>sentido de logro.</li>
+</ul>
+
+
+
+<h2>Instrumentos Evaluativos Relacionados con el Arte</h2>
+
+
+
+<p>Para evaluar de manera efectiva el trabajo artístico, utilizamos diversos instrumentos<br>evaluativos diseñados específicamente para valorar la creatividad, la técnica y la<br>expresión. Algunos de estos instrumentos incluyen:</p>
+
+
+
+<p><strong>Rúbricas de Evaluación Artística: </strong>Desarrollamos rúbricas detalladas que<br>consideran aspectos como la originalidad, la técnica, la composición y la<br>capacidad de transmitir ideas y emociones a través del arte. Estas rúbricas<br>proporcionan criterios claros y objetivos para la evaluación.</p>
+
+
+
+<p><strong>Diarios Reflexivos:</strong> Los estudiantes llevan diarios donde reflexionan sobre sus<br>experiencias artísticas, los desafíos que enfrentan y las soluciones que encuentran. Estos diarios fomentan la metacognición y permiten a los docentes<br>comprender mejor el proceso de aprendizaje de cada estudiante.</p>
+
+
+
+<p><strong>Autoevaluación y Coevaluación:</strong> Fomentamos la autoevaluación y la<br>coevaluación entre los estudiantes, permitiéndoles valorar su propio trabajo y el<br>de sus compañeros. Este enfoque promueve la reflexión crítica y el aprendizaje<br>colaborativo.</p>
+
+
+
+<h2>El Arte en Proyectos Multidisciplinarios</h2>
+
+
+
+<p>El arte actúa como un conector natural entre diferentes disciplinas, facilitando la<br>creación de proyectos multidisciplinarios que integran conocimientos y habilidades de<br>diversas áreas. En el Liceo de Ciencias y Artes de Quito, utilizamos el arte como eje<br>para estos proyectos, permitiendo a los estudiantes explorar temas complejos de manera creativa e innovadora.<br>Algunos ejemplos de proyectos multidisciplinarios incluyen:</p>
+
+
+
+<p><strong>Ciencias y Arte:</strong> Los estudiantes pueden combinar la biología con la escultura<br>para crear modelos detallados de células o ecosistemas, o integrar la química con<br>la pintura para explorar reacciones químicas a través del color y la textura.</p>
+
+
+
+<p><strong>Matemáticas y Arte:</strong> A través de la geometría, los estudiantes pueden crear<br>obras artísticas que exploren patrones, simetría y proporciones. Las matemáticas<br>se convierten en una herramienta para entender y crear arte visualmente<br>impactante.</p>
+
+
+
+<p><strong>Literatura y Teatro:</strong> Los proyectos de literatura pueden incluir la creación de<br>guiones, la adaptación de cuentos a obras de teatro y la representación escénica<br>de textos literarios. Esto no solo mejora la comprensión lectora, sino que<br>también desarrolla habilidades de expresión oral y corporal.</p>
+
+
+
+<h2>Fuentes y Referencias</h2>
+
+
+
+<p>Para fundamentar nuestra visión del arte como eje transversal en la educación, nos<br>apoyamos en las ideas de diversos autores que han explorado la relación entre arte,<br>creatividad y aprendizaje. Por ejemplo, Elliot Eisner (2004) destaca la importancia del<br>arte en el desarrollo cognitivo y emocional de los estudiantes, argumentando que «el<br>arte enseña a los niños a pensar a través de materiales y procesos que no se limitan a lo verbal y lo numérico» (p. 70).<br>Asimismo, Howard Gardner (2010), con su teoría de las inteligencias múltiples, subraya<br>que el arte juega un papel crucial en el desarrollo de múltiples formas de inteligencia,<br>incluyendo la espacial, la musical y la corporal-cinestésica.</p>
+
+
+
+<h2>Conclusión</h2>
+
+
+
+<p>En el Liceo de Ciencias y Artes de Quito, el arte es mucho más que una asignatura: es<br>una herramienta poderosa para la evaluación y el desarrollo de proyectos<br>multidisciplinarios. A través del arte, nuestros estudiantes no solo aprenden contenidos<br>académicos, sino que también desarrollan habilidades críticas, creativas y emocionales<br>que los preparan para enfrentar los desafíos del mundo moderno. Estamos comprometidos con esta visión, sabiendo que el arte tiene el poder de transformar la<br>educación y la vida de nuestros estudiantes.</p>
+
+
+
+<h2>Referencias</h2>
+
+
+
+<ul>
+<li>Eisner, E. W. (2004). El arte y la creación de la mente: El papel de las artes<br>visuales en la transformación de la conciencia. Paidós.</li>
+
+
+
+<li>Gardner, H. (2010). Las inteligencias múltiples: La teoría en la práctica. Paidós.</li>
+</ul>
+  </article></div></section>
+</div>
+
+<!-- ===== blog-ia ===== -->
+<div class="view" id="v-blog-ia" hidden>
+  <section class="pagehead"><div class="wrap">
+    <a class="back" href="#blog">← Blog</a>
+    <h1 class="post-title">Tareas hechas con Inteligencia Artificial. Ningún problema: Un Nuevo Paradigma a Través de Procesos Metacognitivos</h1>
+    <p><time datetime="2024-06-14">14 jun 2024</time> · Por Mgst. Isaac Vásquez R.</p>
+  </div></section>
+  <section><div class="wrap"><article class="prose">
+<p>Como rector del Liceo de Ciencias y Artes de Quito, es un placer compartir nuestras reflexiones sobre un tema de creciente relevancia en el ámbito educativo: la evaluación de tareas realizadas con la ayuda de inteligencia artificial (IA). De hecho me encuentro haciendo mi doctorado y justamente la investigación que dirijo a ese respecto se basa en esta sencilla idea, DEBEMOS CAMBIAR EL PARADIGMA DE LA EVALUACIÓN. En nuestra institución, comprometida con la formación holística-humanista, consideramos esencial no solo adaptar nuestras metodologías pedagógicas a las nuevas tecnologías, sino también reimaginar el proceso de evaluación para que este sea verdaderamente integral y formativo.</p>
+
+
+
+<h2>El Desafío de Evaluar Tareas con IA</h2>
+
+
+
+<p>La inteligencia artificial ha comenzado a desempeñar un papel significativo en la educación, proporcionando herramientas que pueden ayudar a los estudiantes a investigar, crear y aprender de maneras antes inimaginables. Sin embargo, la integración de estas tecnologías también plantea importantes desafíos, particularmente en el ámbito de la evaluación. La cuestión no es solo cómo evaluar el producto final, sino también cómo valorar el proceso de aprendizaje que llevó a su creación.</p>
+
+
+
+<h2>Procesos Metacognitivos: Clave para la Evaluación Integral</h2>
+
+
+
+<p>Para abordar estos desafíos, proponemos un enfoque basado en procesos metacognitivos, que implica hacer que los estudiantes tomen conciencia y control de sus propios procesos de pensamiento durante la realización de tareas con IA. La metacognición, entendida como «el conocimiento y regulación de los propios procesos cognitivos» (Flavell, 1979), nos ofrece un marco robusto para evaluar no solo el producto final, sino también el proceso de aprendizaje.</p>
+
+
+
+<h2>Evaluando el Proceso y los Prompts</h2>
+
+
+
+<p>Uno de los aspectos más innovadores y valiosos de la IA es su capacidad para responder a instrucciones detalladas o «prompts». Por tanto, una parte crucial de la evaluación debe centrarse en los prompts utilizados por los estudiantes. La calidad y especificidad de estos prompts no solo reflejan el conocimiento del tema, sino también su capacidad para pensar críticamente y formular preguntas precisas.<br>Para implementar este enfoque, podemos seguir varios pasos:</p>
+
+
+
+<ul>
+<li>Documentación del Proceso: Solicitar a los estudiantes que mantengan un registro detallado de los prompts utilizados y las respuestas obtenidas. Este registro debe incluir reflexiones sobre por qué eligieron ciertos prompts y cómo evaluaron la información proporcionada por la IA.</li>
+
+
+
+<li>Reflexión Metacognitiva: Incorporar actividades de reflexión donde los estudiantes analicen sus propios procesos de pensamiento. ¿Cómo decidieron qué prompts usar? ¿Cómo evaluaron la validez de las respuestas de la IA? ¿Qué estrategias emplearon para mejorar sus consultas?</li>
+
+
+
+<li>Evaluación Holística: Desarrollar rúbricas de evaluación que consideren tanto el producto final como el proceso de creación. Las rúbricas deben valorar la calidad de los prompts, la profundidad de la reflexión metacognitiva y la habilidad para integrar y aplicar la información obtenida.</li>
+</ul>
+
+
+
+<h2>Fuentes y Referencias</h2>
+
+
+
+<p>Para fundamentar nuestra propuesta, nos basamos en la investigación de varios autores que han explorado la relación entre tecnología, metacognición y educación. Por ejemplo, Flavell (1979) introdujo el concepto de metacognición, que sigue siendo una piedra angular en la investigación educativa. Además, la obra de Coll y Monereo (2008) sobre el uso de herramientas tecnológicas en el aprendizaje autorregulado proporciona una valiosa perspectiva sobre cómo las tecnologías pueden apoyar la metacognición.<br>También es relevante considerar la investigación de Pozo y Postigo (2000), quienes revisaron intervenciones metacognitivas en el contexto educativo y destacaron la importancia de enseñar estrategias metacognitivas para mejorar el aprendizaje autónomo y la autorregulación.</p>
+
+
+
+<h2>Conclusión</h2>
+
+
+
+<p><br>La integración de la inteligencia artificial en la educación presenta una oportunidad única para transformar no solo la enseñanza, sino también la evaluación. Al centrarnos en los procesos metacognitivos y en la calidad de los prompts utilizados por los estudiantes, podemos desarrollar un enfoque de evaluación más completo y formativo que fomente el pensamiento crítico, la autorreflexión y el aprendizaje continuo. En el Liceo de Ciencias y Artes de Quito, estamos comprometidos con esta visión, preparando a nuestros estudiantes para ser pensadores independientes y ciudadanos responsables en un mundo cada vez más digital.</p>
+
+
+
+<h2>Referencias</h2>
+
+
+
+<p><br>Coll, C., &amp; Monereo, C. (2008). Psicología de la educación virtual: aprender y enseñar con las tecnologías de la información y la comunicación. Morata.<br>Flavell, J. H. (1979). Metacognición y monitoreo cognitivo: una nueva área de investigación del desarrollo cognitivo. American Psychologist, 34(10), 906-911. https://doi.org/10.1037/0003-066X.34.10.906<br>Pozo, J. I., &amp; Postigo, Y. (2000). Intervención educativa y aprendizaje estratégico. Universidad Nacional de Educación a Distancia.</p>
+  </article></div></section>
+</div>
+
 </main>
 
 <footer class="site">
@@ -679,10 +1000,10 @@ nav a[aria-current="page"]{background:var(--surface);color:var(--ink-2)}
       <h4>Otros links</h4>
       <ul>
         <li><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li>
-        <li><a href="https://liceodecienciasyartes.com/inscripciones/">Inscripciones</a></li>
+        <li><a href="#inscripciones">Inscripciones</a></li>
         <li><a href="assets/docs/RESOLUCION-COSTOS-2023.pdf">Costos</a></li>
         <li><a href="assets/docs/CODIGO-DE-CONVIVENCIA-ACTUAL-LICEO-2021-2025-Revisado-15-de-Mayo-de-2021.pdf">Código de convivencia</a></li>
-        <li><a href="https://liceodecienciasyartes.com/trabaja-con-nosotros/">Trabaja con nosotros</a></li>
+        <li><a href="#trabaja-con-nosotros">Trabaja con nosotros</a></li>
       </ul>
     </div>
     <div>
@@ -711,19 +1032,21 @@ sync();mq.addEventListener('change',sync);
 btn.addEventListener('click',function(){setMenu(menu.hidden)});
 menu.addEventListener('click',function(e){if(e.target.tagName==='A'&&mq.matches)setMenu(false)});
 
-var routes=['inicio','oferta-academica','sobre-nosotros','instalaciones','preguntas-frecuentes','blog','contactanos'];
+var routes=['inicio','oferta-academica','sobre-nosotros','instalaciones','preguntas-frecuentes','blog','contactanos','inscripciones','trabaja-con-nosotros','blog-boletas','blog-arte-evaluacion','blog-ia'];
 function route(){
   var h=(location.hash||'#inicio').slice(1); if(routes.indexOf(h)<0) h='inicio';
   routes.forEach(function(r){document.getElementById('v-'+r).hidden=(r!==h)});
-  document.querySelectorAll('nav a').forEach(function(a){a.getAttribute('href')==='#'+h?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current')});
+  document.querySelectorAll('nav a').forEach(function(a){a.getAttribute('href')==='#'+(h.indexOf('blog-')===0?'blog':h)?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current')});
   window.scrollTo(0,0);
 }
 window.addEventListener('hashchange',route);route();
-document.getElementById('contact-form').addEventListener('submit',function(e){
-  e.preventDefault();var f=e.target,n=document.getElementById('c-note');n.hidden=false;
-  if(!f.checkValidity()){n.className='note err';n.textContent='Completa tu nombre, un email válido y tu mensaje.';return}
-  n.className='note';n.textContent='Vista previa: el formulario aún no envía. Al publicar el sitio se conectará al correo de secretaría.';
-});
+function wire(id,note,msg){document.getElementById(id).addEventListener('submit',function(e){
+  e.preventDefault();var f=e.target,n=document.getElementById(note);n.hidden=false;
+  if(!f.checkValidity()){n.className='note err';n.textContent=msg;return}
+  n.className='note';n.textContent='Este formulario todavía no envía datos. Mientras tanto, escríbenos a secretaria@liceodecienciasyartes.edu.ec.';
+});}
+wire('contact-form','c-note','Completa tu nombre, un email válido y tu mensaje.');
+wire('job-form','t-note','Completa tu nombre, tu cédula (10 dígitos), un email válido y adjunta tu hoja de vida.');
 </script>
 
 </body>
