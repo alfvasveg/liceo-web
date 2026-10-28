@@ -1,0 +1,53 @@
+name: Copia exacta del WordPress
+
+# Corre al subir este archivo o a mano desde la pestaña Actions.
+# Reemplaza el sitio publicado por una copia idéntica del WordPress actual.
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/espejo-wordpress.yml
+      - scripts/espejo/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: espejo
+  cancel-in-progress: true
+
+jobs:
+  copiar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar navegador
+        run: |
+          pip install playwright==1.47.0
+          python -m playwright install --with-deps chromium
+      - name: Capturar el sitio con un navegador real
+        run: python scripts/espejo/capturar.py _espejo
+      - name: Ajustar enlaces y bajar lo que falte
+        run: python scripts/espejo/arreglar.py _espejo
+      - name: Reemplazar el sitio por la copia
+        run: |
+          rm -rf index.html assets home blog contactanos inscripciones instalaciones oferta-academica \
+                 preguntas-frecuentes sobre-nosotros trabaja-con-nosotros 2024 author category wp-content wp-includes
+          mkdir -p respaldo
+          mv _espejo/_faltantes.txt respaldo/espejo-faltantes.txt
+          cp -a _espejo/. ./
+          rm -rf _espejo
+          find . -path ./.git -prune -o -type f -name '*.html' -print | wc -l
+      - name: Guardar en el repositorio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898729+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
+          git commit -q -m "Copia exacta del sitio WordPress"
+          git push
