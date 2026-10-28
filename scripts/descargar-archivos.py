@@ -2,7 +2,7 @@
 """Descarga las imágenes y PDFs que hoy viven en el WordPress del Liceo
 y cambia las rutas de index.html para que apunten a las copias locales.
 
-Hay que correrlo UNA vez, ANTES de cambiar el dominio a Cloudflare Pages
+Hay que correrlo UNA vez, ANTES de apuntar el dominio a GitHub Pages
 (después de cambiarlo, el WordPress deja de responder y los archivos se pierden).
 
 Uso (desde la carpeta del repositorio):
@@ -36,7 +36,7 @@ def main() -> int:
                 req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
                 with urllib.request.urlopen(req, timeout=30) as r:
                     destino.write_bytes(r.read())
-            reemplazos[url] = f"/{carpeta}/{nombre}"
+            reemplazos[url] = f"{carpeta}/{nombre}"
             print("ok   ", nombre)
         except Exception as e:  # noqa: BLE001
             fallos.append((url, e))
